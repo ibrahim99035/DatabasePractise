@@ -46,5 +46,57 @@ I had used ChatGPT to generate the tasks, and I had used Lucid Spark to create t
 
 - Binary relationship between the authors and their books.
 - One auther can write Many books but, any book has one author (One-To-Many).
-- All book **_must_** have author (Full Participation).
-- All author **_must_** have books (Full Participation).
+- All books **_must_** have author (Full Participation).
+- All authors **_must_** have books (Full Participation).
+
+### Relationship 2: Borrow (Book - Borrower):
+
+- Binary relationship between the borrower and the books.
+- One borrower can borrow Many books but, any book has one borrower (One-To-Many).
+- Any book **_may_** has borrower (Partial Participation).
+- All borrowers **_must_** have books (Full Participation).
+
+### Library ERD: 
+
+**Lucid Spark used to create this ERD.**
+
+![ERD](https://github.com/ibrahim99035/DatabasePractise/blob/621a2acea87e17abfc29b24c105197c248c0785c/Library%20Management%20System/Project%20ERD.png)
+
+### Library DB Logical Design: 
+
+![LogicalDesign](https://github.com/ibrahim99035/DatabasePractise/blob/621a2acea87e17abfc29b24c105197c248c0785c/Library%20Management%20System/dbdiagramio.PNG)
+
+**MySQL Workbench, MySQL on XAMPP, and dbdiagram.io had been used to Create This Logical Schema.**
+
+### MySQL Syntax:
+
+```sql
+CREATE SCHEMA `mydb`;
+
+CREATE TABLE `mydb`.`Author` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE `mydb`.`Book` (
+  `ISBN` VARCHAR(13) PRIMARY KEY NOT NULL,
+  `Title` VARCHAR(100) NOT NULL,
+  `PubYear` INT NOT NULL,
+  `AuthorID` INT NOT NULL
+);
+
+CREATE TABLE `mydb`.`Borrower` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `FirstName` VARCHAR(50) NOT NULL,
+  `LastName` VARCHAR(50) NOT NULL,
+  `ContactInfo` VARCHAR(100) NOT NULL,
+  `BookISBN` VARCHAR(13) NOT NULL
+);
+
+
+ALTER TABLE `mydb`.`Book` ADD CONSTRAINT `id` FOREIGN KEY (`AuthorID`) REFERENCES `mydb`.`Author` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE `mydb`.`Borrower` ADD CONSTRAINT `ISBN` FOREIGN KEY (`BookISBN`) REFERENCES `mydb`.`Book` (`ISBN`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+```
+
