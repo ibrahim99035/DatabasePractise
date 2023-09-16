@@ -60,7 +60,7 @@ I had used ChatGPT to generate the tasks, and I had used Lucid Spark to create t
 
 **Lucid Spark used to create this ERD.**
 
-![ERD](https://github.com/ibrahim99035/DatabasePractise/blob/621a2acea87e17abfc29b24c105197c248c0785c/Library%20Management%20System/Project%20ERD.png)
+![ERD](https://github.com/ibrahim99035/DatabasePractise/blob/7998c4cf1a5dc77fe6edaac9aff2a26a85564e67/Library%20Management%20System/Library%20ERD.png)
 
 ### Library DB Logical Design: 
 
